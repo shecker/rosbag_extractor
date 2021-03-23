@@ -114,6 +114,7 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
 
     df = {'timestamp': data_dict['/zed2/zed_node/left/image_rect_color/compressed/data']['ts'],
           'zed2': data_dict['/zed2/zed_node/left/image_rect_color/compressed/data']['data']}
+    panda
     for k, v in data_dict.items():
         if 'zed2' in k:
             continue
@@ -123,7 +124,7 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
                                               indices,
                                               bounds_error=False,
                                               fill_value='extrapolate',
-                                              kind='nearest')
+                                              kind='next')
         else:
             interpolation_function = interp1d(data_dict[k]['ts'],
                                               data_dict[k]['data'],
@@ -140,6 +141,8 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
 
     # now we have read all of the messages its time to assemble the dataframe
     df_out = pd.DataFrame(data=df)
+    df_out = df_out.sort_values(by=['timestamp'])
+    df_out = df_out.reset_index(drop=True)
     df_out.to_csv(output + '/data.csv')
 
 
