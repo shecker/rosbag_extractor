@@ -1,4 +1,5 @@
 # rosbag_pandas
+based on [this](https://github.com/eurogroep/rosbag_pandas) repository.
 
 ## Scripts
 
