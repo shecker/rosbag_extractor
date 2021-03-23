@@ -1,6 +1,11 @@
 # rosbag_pandas
 based on [this](https://github.com/eurogroep/rosbag_pandas) repository.
 
+### Before running the scripts, build the rosbag_pandas package
+```
+python setup.py install
+```
+
 ## Scripts
 
 ### bag_csv
@@ -20,7 +25,7 @@ optional arguments:
   -e [EXCLUDE [EXCLUDE ...]], --exclude [EXCLUDE [EXCLUDE ...]]
                         List for topics to exclude
   -o OUTPUT, --output OUTPUT
-                        path of the output folder
+                        output folder path
   -v, --verbose         Log verbose
 ```
 
