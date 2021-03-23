@@ -36,7 +36,7 @@ This will select the `/pose/position/x` property of topic `/pose` in the message
 
 ### bag_csv
 
-Convert a ROS bag file to a CSV file:
+Convert a ROS bag file to a CSV file and extract the images in image topics in separate folders. The image paths are found in the csv file.
 ```
 usage: bag_csv [-h] [-b BAG] [-i [INCLUDE [INCLUDE ...]]]
                [-e [EXCLUDE [EXCLUDE ...]]] [-o OUTPUT] [-v]
