@@ -9,7 +9,7 @@ Convert a ROS bag file to a CSV file and extract the images in image topics in s
 usage: bag_csv [-h] [-b BAG] [-i [INCLUDE [INCLUDE ...]]]
                [-e [EXCLUDE [EXCLUDE ...]]] [-o OUTPUT] [-v]
 
-Script to parse bagfile to csv file
+Script to parse bagfile to csv file and extract images to jpeg format.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -19,7 +19,7 @@ optional arguments:
   -e [EXCLUDE [EXCLUDE ...]], --exclude [EXCLUDE [EXCLUDE ...]]
                         List for topics to exclude
   -o OUTPUT, --output OUTPUT
-                        name of the output file
+                        path of the output folder
   -v, --verbose         Log verbose
 ```
 
