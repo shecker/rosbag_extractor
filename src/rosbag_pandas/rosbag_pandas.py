@@ -52,7 +52,8 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
     type_topic_info = bag.get_type_and_topic_info()
     topics = type_topic_info.topics.keys()
 
-    output_images = os.path.join(output, '/images/')
+    image_folder = 'images'
+    output_images = os.path.join(output, image_folder)
 
     try:
         os.makedirs(output_images)
@@ -75,14 +76,14 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
     img_idx = {}
     for topic in topics:
         if "image" in topic:
-            image_folder = output_images + topic.split('/')[1]
+            image_folder = os.path.join(output_images, topic.split('/')[1])
             if topic not in img_idx:
                 img_idx[topic] = {'folder': image_folder, 'counter': 0}
             try:
-                os.makedirs(os.path.join(output_images, image_folder))
-                print("Directory '%s' created" % output)
+                os.makedirs(image_folder)
+                print("Directory '%s' created" % image_folder)
             except FileExistsError as e:
-                print("Directory '%s' already exists" % output)
+                print("Directory '%s' already exists" % image_folder)
 
     data_dict = {}
     for idx, (topic, msg, t) in enumerate(bag.read_messages(topics=topics)):
@@ -97,8 +98,6 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
                 # image_np = cv2.imdecode(np_arr, cv2.CV_LOAD_IMAGE_COLOR)
                 image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)  # OpenCV >= 3.0:
                 image_path = img_idx[topic]['folder'] + '/' + str(img_idx[topic]['counter']) + '.jpg'
-                if not image_np:
-                    continue
                 cv2.imwrite(image_path, image_np)
                 img_idx[topic]['counter'] += 1
                 # cv2.imshow('cv_img', image_np)
