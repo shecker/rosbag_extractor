@@ -34,5 +34,4 @@ if __name__ == '__main__':
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
 
-
-    df = rosbag_pandas.bag_to_dataframe(args.bag, include=args.include, exclude=args.exclude, output=args.output)
+    rosbag_pandas.bag_to_dataframe(args.bag, include=args.include, exclude=args.exclude, output=args.output)
