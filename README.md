@@ -56,44 +56,7 @@ optional arguments:
 ```
 
 ### bag_plot
-
-Plot a key (or multiple keys) in a ROS bag file:
-```
-usage: bag_plot [-h] -b BAG -k [KEY [KEY ...]] [-y  YLIM YLIM] [-c] [-v]
-
-Bagfile key to graph
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -b BAG, --bag BAG     Bag file to read
-  -k [KEY [KEY ...]], --key [KEY [KEY ...]]
-                        Key you would like to plot
-  -y  YLIM YLIM, --ylim YLIM YLIM
-                        Set min and max y lim
-  -c, --combined        Graph them all on one
-  -v, --verbose         Log verbose
-```
-
-#### Example
-
-```
-bag_plot -b 2019-01-16-14-14-37.bag -k /cmd_vel/linear/x /cmd_vel/angular/z -c
-```
-
-![bag_plot](doc/bag_plot.png)
+not implemented yet
 
 ### bag_print
-
-Print a key (or multiple keys) in a ROS bag file:
-```
-usage: bag_print [-h] -b BAG -k [KEY [KEY ...]] [-v]
-
-Print one or multiple bag keys
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -b BAG, --bag BAG     Bag file to read
-  -k [KEY [KEY ...]], --key [KEY [KEY ...]]
-                        Key you would like to print
-  -v, --verbose         Log verbose
-```
+not implemented yet
