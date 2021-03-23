@@ -114,7 +114,7 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
 
     df = {'timestamp': data_dict['/zed2/zed_node/left/image_rect_color/compressed/data']['ts'],
           'zed2': data_dict['/zed2/zed_node/left/image_rect_color/compressed/data']['data']}
-    panda
+    
     for k, v in data_dict.items():
         if 'zed2' in k:
             continue
