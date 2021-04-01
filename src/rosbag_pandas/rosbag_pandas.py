@@ -91,7 +91,7 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
         timestamp = float(str(flattened_dict['header/stamp/secs']) + '.' + str(flattened_dict['header/stamp/nsecs']))
 
         for key, item in flattened_dict.items():
-            if ('header' in key) or ('camera_info' in topic) or ('format' in key):
+            if ('header' in key) or ('camera_info' in topic) or ('format' in key) or ("child_frame_id" in key):
                 continue
             elif 'image' in topic:
                 np_arr = np.fromstring(msg.data, np.uint8)
@@ -118,7 +118,7 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
     for k, v in data_dict.items():
         if 'zed2' in k:
             continue
-        if 'eye' in k:
+        if 'eye' in k or "head" in k:
             indices = [i for i in range(len(data_dict[k]['data']))]
             interpolation_function = interp1d(data_dict[k]['ts'],
                                               indices,
@@ -131,7 +131,8 @@ def bag_to_dataframe(bag_name, include=None, exclude=None, output=None):
                                               bounds_error=False,
                                               fill_value='extrapolate',
                                               kind='linear')
-        if 'eye' in k:
+
+        if 'eye' in k or "head" in k:
             indices = interpolation_function(data_dict['/zed2/zed_node/left/image_rect_color/compressed/data']['ts'])
             df[k] = [data_dict[k]['data'][int(i)] for i in indices]
         else:
