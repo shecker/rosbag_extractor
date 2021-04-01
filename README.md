@@ -1,6 +1,29 @@
 # rosbag_pandas
 based on [this](https://github.com/eurogroep/rosbag_pandas) repository.
 
+## Running with Docker or Singularity
+
+### Run with Docker on local machine
+```bash
+# change /absolute/path/to/folder/with/bag to the location of your rosbag folder.
+docker run --rm -it -v /absolute/path/to/folder/with/bag:/rosbags shecker/aegis.extract bash 
+conda activate bag_extract
+source /opt/ros/melodic/setup.bash
+cd /app/rosbag_extractor/scripts
+./bag_csv -b /rosbags/<bag_file.bag> -o /rosbags/<extraction_folder>
+```
+
+### Run with Singularity on ETH Cloud 
+```bash
+# change /absolute/path/to/folder/with/bag to the location of your rosbag folder you can set new ones.
+singularity shell -B /srv/beegfs02/scratch/aegis_guardian/data/rosbags:/rosbags /scratch_net/hispalensis/aegis-extract.simg
+/home/user/miniconda/bin/activate bag_extract
+source /opt/ros/melodic/setup.bash
+cd /app/rosbag_extractor/scripts
+# set new folders here for amalitech
+./bag_csv -b /rosbags/<bag_file.bag> -o /rosbags/<extraction_folder> 
+```
+
 ### Before running the scripts, build the rosbag_pandas package
 ```
 python setup.py install
